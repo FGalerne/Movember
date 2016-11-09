@@ -1,0 +1,30 @@
+MovemberBundle\Entity\Movember:
+    type: entity
+    table: null
+    repositoryClass: MovemberBundle\Repository\MovemberRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 255
+        prenom:
+            type: string
+            length: 255
+        moustache:
+            type: string
+            length: 255
+        codepostal:
+            type: string
+            length: 255
+        ville:
+            type: string
+            length: 255
+        email:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }
