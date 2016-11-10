@@ -35,10 +35,15 @@
     <!--Fin NavBar-->
 
     <!--Accueil-->
+    <img src="{asset('bundles')}" alt="">
     <div class="col-xs-12 titre">
         <h1>Voter pour la plus belle moustache</h1>
     </div>
     <!--Fin Acceuil-->
+    <!--Formulaire inscription-->
+    {% include '@FOSUser/Registration/register_content.html.twig' %}
+    <!--Formulaire inscription-->
+
 
     <!--Moustaches-->
     <div class="cr">
