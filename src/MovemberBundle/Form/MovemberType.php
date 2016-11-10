@@ -13,7 +13,16 @@ class MovemberType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('prenom')->add('moustache')->add('codepostal')->add('ville')->add('email')        ;
+        $builder
+            ->add('nom')
+            ->add('prenom')
+            ->add('moustache')
+            ->add('codepostal')
+            ->add('ville')
+            ->add('email')
+            ->add('image')
+            ->add('file', 'file', array('required' => false))
+        ;
     }
     
     /**

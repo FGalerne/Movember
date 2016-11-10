@@ -1,4 +1,3 @@
-# src/AppBundle/Resources/config/doctrine/User.orm.yml
 AppBundle\Entity\User:
     type:  entity
     table: fos_user
