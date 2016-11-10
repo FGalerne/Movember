@@ -1,6 +1,6 @@
 movember_movember:
     resource: "@MovemberBundle/Resources/config/routing/movember.yml"
-    prefix:   /movember
+    prefix:   /
 
 movember_homepage:
     path:     /
