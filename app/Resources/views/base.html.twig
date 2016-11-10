@@ -6,7 +6,7 @@
     {% block stylesheets %}
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="{{ asset('bundle/movember/css/style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/movember/css/style.css') }}">
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
@@ -17,7 +17,52 @@
 {% block javascripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script>$("#carousel-example-generic").carousel({interval: 500000, pause: "hover"});</script>
+    <script>
 
+        $('#testBtn').click(function () {
+            var btn = $(this);
+            var cnt = Number(btn.text());
+            console.log(btn.text());
+            btn.button('loading');
+            setTimeout(function () {
+                cnt++;
+                console.log(cnt);
+                btn.text(' '+cnt);
+                btn.prop("disabled", (_, val) => !val);
+                btn.removeClass('disabled');
+            }, 150);
+        });
+    </script>
+    <script>
+
+        var locations = [
+            ['Loulappe', 48.439171, 1.283147, 1],
+            ['Lyon',45.764043 ,4.835658999999964 , 2],
+            ['Strasbourg',48.57340529999999 ,7.752111300000024 , 3],
+            ['Nîmes', 43.836699, 4.360053999999991, 4],
+            ['Bordeaux',44.837789 ,-0.5791799999999512 , 5]
+        ];
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 5,
+            center: new google.maps.LatLng(48.862725, 12.287592),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+        var infowindow = new google.maps.InfoWindow();
+        var marker, i;
+        for (i = 0; i < locations.length; i++) {
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                map: map
+            });
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                return function() {
+                    infowindow.setContent(locations[i][0]);
+                    infowindow.open(map, marker);
+                }
+            })(marker, i));
+        }
+    </script>
 
 {% endblock %}
 </body>
