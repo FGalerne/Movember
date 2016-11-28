@@ -1,5 +1,32 @@
+.container-fluid{
+    background-color: #000;
+    color: white;
+
+}
+.hight{
+    height: 150px;
+}
 h1{
     text-align: center;
+}
+
+h2{
+
+    font-size: 25px;
+    text-align: center;
+
+}
+
+.rules{
+    padding: 10px 25px 10px 25px;
+    text-align: justify;
+    border: solid #99fd70;
+    margin: 0 50px 0 25px;
+}
+
+.rules p{
+    font-size: 18px;
+    text-align: justify;
 }
 .carousel-inner, .titre{
     background-color: black;
@@ -18,7 +45,4 @@ button{
     height:350px;
 
 }
-h1{
-    font-size: 6.3em;
-    margin-top:70px;
-}
+

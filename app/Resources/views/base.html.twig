@@ -10,47 +10,20 @@
     {% endblock %}
 
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <link href="https://fonts.googleapis.com/css?family=Molle:400i" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
 <body>
+{% include '::topNav.html.twig' %}
 
-{% block nav %}
-    <!--NavBar-->
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Brand</a>
-            </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Régles <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">Nos Movembers</a></li>
-                </ul>
+<div class="container-fluid">
+    {% block body %}
 
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ path('fos_user_registration_register') }}">S'inscrire</a></li>
-                    <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    </nav>
 
-    <!--Fin NavBar-->
+    {% endblock %}
 </div>
-{% endblock %}
-{% block body %}
-
-{% endblock %}
 {% block javascripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -71,6 +44,7 @@
             }, 150);
         });
     </script>
+
     <script>
 
         var locations = [

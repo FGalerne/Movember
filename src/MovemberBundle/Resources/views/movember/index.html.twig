@@ -1,49 +1,70 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Movembers list</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Moustache</th>
-                <th>Codepostal</th>
-                <th>Ville</th>
-                <th>Email</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for movember in movembers %}
-            <tr>
-                <td><a href="{{ path('movember_show', { 'id': movember.id }) }}">{{ movember.id }}</a></td>
-                <td>{{ movember.nom }}</td>
-                <td>{{ movember.prenom }}</td>
-                <td>{{ movember.moustache }}</td>
-                <td>{{ movember.codepostal }}</td>
-                <td>{{ movember.ville }}</td>
-                <td>{{ movember.email }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('movember_show', { 'id': movember.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('movember_edit', { 'id': movember.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="row">
 
-    <ul>
+        <div class="col-xs-12 hight">
+            <h1>Laissez-vous pousser la Moustache</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 rules">
+            <h2>Régles</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi blanditiis non obcaecati perferendis? Eveniet, natus, unde! Blanditiis commodi consequuntur doloribus explicabo laudantium maiores officiis provident quidem quis veniam vitae, voluptatum?</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti deserunt illum sint soluta velit! Ab, assumenda beatae culpa dolore eaque et fugiat impedit ipsa ipsam labore officiis perspiciatis repellendus, tenetur.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div id="map" style="width: 900px; height: 750px;"></div>
+        </div>
+
+    </div>
+
+
+
+
+
+    {% block javascripts %}
+        <script>
+
+            var locations = [
+                ['Loulappe', 48.439171, 1.283147, 1],
+                ['Lyon',45.764043 ,4.835658999999964 , 2],
+                ['Strasbourg',48.57340529999999 ,7.752111300000024 , 3],
+                ['Nîmes', 43.836699, 4.360053999999991, 4],
+                ['Bordeaux',44.837789 ,-0.5791799999999512 , 5]
+            ];
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 5,
+                center: new google.maps.LatLng(48.862725, 12.287592),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+            var infowindow = new google.maps.InfoWindow();
+            var marker, i;
+            for (i = 0; i < locations.length; i++) {
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                    map: map
+                });
+                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                    return function() {
+                        infowindow.setContent(locations[i][0]);
+                        infowindow.open(map, marker);
+                    }
+                })(marker, i));
+            }
+        </script>
+
+    {% endblock %}
+
+
+    {#<ul>
         <li>
             <a href="{{ path('movember_new') }}">Create a new movember</a>
         </li>
-    </ul>
+    </ul>#}
 {% endblock %}
+
+
