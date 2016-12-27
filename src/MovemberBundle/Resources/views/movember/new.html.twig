@@ -83,41 +83,6 @@
     <div id="map" style="width: 900px; height: 750px;"></div>
 
 
-    {% block javasripts %}
-        <script src="http://maps.google.com/maps/api/js?sensor=false&key=AIzaSyBSFjZGurwwEtOnMOg1mKgJgS3WcP8ucrk" type="text/javascript"></script>
-
-    <script>
-        {#
-        var adresse = '<?= $adresse ?>';
-        console.log(adresse);  var_dump en JS#}
-        var locations = [
-            ['Loulappe', 48.439171, 1.283147, 1],
-            ['Lyon',45.764043 ,4.835658999999964 , 2],
-            ['Strasbourg',48.57340529999999 ,7.752111300000024 , 3],
-            ['Nîmes', 43.836699, 4.360053999999991, 4],
-            ['Bordeaux',44.837789 ,-0.5791799999999512 , 5]
-        ];
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 5,
-            center: new google.maps.LatLng(48.862725, 12.287592),
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        });
-        var infowindow = new google.maps.InfoWindow();
-        var marker, i;
-        for (i = 0; i < locations.length; i++) {
-            marker = new google.maps.Marker({
-                position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-                map: map
-            });
-            google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                return function() {
-                    infowindow.setContent(locations[i][0]);
-                    infowindow.open(map, marker);
-                }
-            })(marker, i));
-        }
-    </script>
-        {% endblock %}
 
 
 

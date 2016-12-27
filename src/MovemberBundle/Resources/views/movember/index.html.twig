@@ -2,6 +2,8 @@
 
 {% block body %}
 
+
+
     <div class="row">
         <div class="col-xs-12 hight">
             <h1>Laissez-vous pousser la Moustache</h1>
@@ -18,7 +20,7 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <div id="map" style="width: 900px; height: 750px;"></div>
+            <div id="map" style="width: 900px; height: 750px; background-color: white;"></div>
         </div>
     </div>
 
@@ -38,12 +40,13 @@
     </div>
 
 
+    {% block javasripts %}
+        <script src="http://maps.google.com/maps/api/js?sensor=false&key=AIzaSyBSFjZGurwwEtOnMOg1mKgJgS3WcP8ucrk" type="text/javascript"></script>
 
-
-
-    {% block javascripts %}
         <script>
-
+            {#
+            var adresse = '<?= $adresse ?>';
+            console.log(adresse);  var_dump en JS#}
             var locations = [
                 ['Loulappe', 48.439171, 1.283147, 1],
                 ['Lyon',45.764043 ,4.835658999999964 , 2],
@@ -71,8 +74,10 @@
                 })(marker, i));
             }
         </script>
-
     {% endblock %}
+
+
+
 
 
     {#<ul>
